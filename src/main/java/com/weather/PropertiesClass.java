@@ -10,10 +10,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -59,12 +61,14 @@ class PropertiesClass {
 		URL url = null;
 		try {
 			url = new URL(appiumUrl.toString());
+			
 		} catch (MalformedURLException e) {
-			return url;
+			e.printStackTrace();
+			
+			
 		}
 
 		return url;
-
 	}
 
 }

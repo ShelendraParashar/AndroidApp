@@ -10,20 +10,24 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
+import org.apache.commons.logging.impl.Log4JLogger;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.log4testng.Logger;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class BaseTest {
-
+	
 	static FileReader reader;
 	static Properties prop;
 	static DesiredCapabilities caps;
@@ -31,9 +35,26 @@ public class BaseTest {
 	static WebDriverWait wait;
 	
 	public static AndroidDriver<AndroidElement> setUp() {
-		driver = new AndroidDriver<AndroidElement>(PropertiesClass.returnAppiumUrl(), PropertiesClass.returnCapabilityObject());
+		
+		/*URL url = PropertiesClass.returnAppiumUrl();
+		if(url == null) {
+			System.out.println("Driver was not initialzed.");
+			return null;
+		}*/
+		
+		if (PropertiesClass.returnAppiumUrl()==null) {
+			System.out.println("Driver was not initialzed.");
+			return null;
+			
+		}
+		else {
+		driver = new AndroidDriver<AndroidElement>(PropertiesClass.returnAppiumUrl() , PropertiesClass.returnCapabilityObject());
+		
 		return driver;
-	}
+		}
+		
+		}
+	
 
 	public static void waitForElementToVisible(WebElement ele) {
 		wait = new WebDriverWait(driver, 20);
