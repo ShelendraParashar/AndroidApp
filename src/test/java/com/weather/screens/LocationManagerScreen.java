@@ -26,4 +26,10 @@ public class LocationManagerScreen {
 	}
 	
 	
+	
+	public void clickOnSearchIcon() {
+		searchIcon.click();
+	}
+	
+	
 }

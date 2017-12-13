@@ -26,7 +26,7 @@ public class LocationManagerTest {
 	}
 
 	
-/*	@Test(priority=1)
+	@Test(priority=1)
 	public void testSearchLocationTextBoxTextHint() {
 		Assert.assertEquals("Search locations", LocationManagerPageObj.searchTextBox.getText());
 	}
@@ -35,5 +35,5 @@ public class LocationManagerTest {
 	public void testSearchAndSaveLocation() {
 		BaseTest.clickOnElement(LocationManagerPageObj.searchIcon);
 		BaseTest.typeTextInElement(LocationManagerPageObj.searchTextBoxAfterClick, "Miami");
-	}*/
+	}
 }
