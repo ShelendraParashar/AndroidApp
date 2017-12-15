@@ -7,11 +7,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.logging.impl.Log4JLogger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,13 +37,7 @@ public class BaseTest {
 	static WebDriverWait wait;
 	
 	public static AndroidDriver<AndroidElement> setUp() {
-		
-		/*URL url = PropertiesClass.returnAppiumUrl();
-		if(url == null) {
-			System.out.println("Driver was not initialzed.");
-			return null;
-		}*/
-		
+				
 		if (PropertiesClass.returnAppiumUrl()==null) {
 			System.out.println("Driver was not initialzed.");
 			return null;
@@ -56,9 +52,9 @@ public class BaseTest {
 		}
 	
 
-	public static void waitForElementToVisible(WebElement ele) {
+	public static void waitForElementToVisible(List <WebElement> ele) {
 		wait = new WebDriverWait(driver, 20);
-		wait.until(ExpectedConditions.visibilityOf(ele));
+		wait.until(ExpectedConditions.visibilityOfAllElements(ele));
 
 	}
 
